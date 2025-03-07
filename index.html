@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilizando JS</title>
+    <style>
+        /*  */
+    </style>
+</head>
+<body>
+    <h1>Soy el titulo de la pagina</h1>
+
+<script>
+
+    // let mensaje = "Hoy es viernes"
+    // console.log(mensaje);
+   
+    // alert(mensaje)
+
+    // let respuesta = prompt("¿Cómo te llamas?")
+
+    // let saludo = "Buenos días" + " " + respuesta
+    // alert(saludo)
+
+    // respuesta = confirm("¿Está lloviendo?")
+
+    // if (respuesta) {
+    //     alert("Coge un paraguas!")
+    // } else {alert("No necesitas paraguas")}
+    // alert(respuesta)
+
+    alert("Calculadora básica")
+    // let miVariable = "Hola"
+    // miVariable = 7
+    let operacion = prompt("Que operacion quieres realizar, +, -, * o /")
+    
+    switch (operacion) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            let numero1 = parseFloat(prompt("Dime el primer numero"))
+            let numero2 = parseFloat(prompt("Dime el segundo numero"))
+            let resultado = `${numero1} ${operacion} ${numero2} =  `
+            let mensaje = ""
+            switch (operacion) {
+                case "+" :
+                    mensaje = resultado + `${numero1 + numero2}` // 2 + 3 = 5
+                    alert(mensaje)
+                    // alert(`${numero1} + ${numero2} = ${numero1 + numero2}`)
+                    break
+                case "-" :
+                    mensaje = resultado + `${numero1 - numero2}` // 2 + 3 = 5
+                    alert(mensaje)
+                    break
+                case "*" :
+                    mensaje = resultado + `${numero1 * numero2}` // 2 + 3 = 5
+                    alert(mensaje)
+                    break
+                case "/" :
+                if (numero2 == 0){
+                    mensaje = resultado + "Dividiste por 0"
+                    }else {
+                    mensaje = resultado + `${numero1 / numero2}` // 2 + 3 = 5
+                    }
+                    alert(mensaje)
+                break
+            }
+
+        break
+                default:
+                    alert("Operación no aceptada")
+    }
+
+    
+
+
+
+
+</script>
+    
+</body>
+</html>
