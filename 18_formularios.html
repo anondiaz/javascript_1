@@ -11,7 +11,9 @@
         div{
             margin: 1rem 0;
         }
-
+        #textoemail {
+            max-width: 90%;
+        }
     </style>
 </head>
 <body>
@@ -73,15 +75,91 @@
                 <div><label><input type="radio" name="colores" value="verde">Verde</label></div>
             </fieldset>
 
-<fieldset>
-    <legend>Checkbox</legend>
-    <div>
-        <label><input type="checkbox" name="condiciones" id="condiciones"> Acepto las condiciones</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="info"> Acepto recibir información comercial</label>
-    </div>
-</fieldset>
+            <fieldset>
+                <legend>Checkbox</legend>
+                <div>
+                    <label><input type="checkbox" name="condiciones" id="condiciones"> Acepto las condiciones</label>
+                </div>
+                <div>
+                    <label><input type="checkbox" name="info"> Acepto recibir información comercial</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fechas</legend>
+                <div>
+                    <label> Año-Mes-Dia-Hora-Minutos <input type="datetime-local" name="datetime-local"></label>
+                </div>
+                <div>
+                    <label> Año-Mes-Dia <input type="date" name="date"></label>
+                </div>
+                <div>
+                    <label> Hora-Minutos <input type="time" name="time"></label>
+                </div>
+                <div>
+                    <label> Semana <input type="week" name="week"></label>
+                </div>
+                <div>
+                    <label> Mes <input type="month" name="month"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tipos varios</legend>
+                <div>
+                    <label> Color : <input type="color" name="color" id="colorfuente"></label>
+                </div>
+                <div>
+                    <label> Ficheros : <input 
+                        type="file" 
+                        name="file" 
+                        accept="image/*, .pdf"
+                        multiple>
+                    </label>
+                </div>
+                <div>
+                    <label> Buscar : <input type="search" name="search"></label>
+                </div>
+                <div>
+                    <label for="range"> Range : <input 
+                        id="range"
+                        type="range" 
+                        name="range"
+                        min="0"
+                        max="10"
+                        ><span id="rangeNumber"></span></label>
+                </div>                
+            </fieldset>
+
+            <fieldset>
+                <legend>Selección desde listas</legend>
+                <div>
+                    <label for="marcas">Elige tu marca favorita</label>
+                    <select name="marcas" id="marcas" multiple>
+                        <option value="mercedes" selected>Mercedes</option>
+                        <option value="audi">Audi</option>
+                        <option value="ferrari">Ferrari</option>
+                        <option value="lamborghini">Lamborghini</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="lenguaje"> Selecciona tu lenguaje </label>
+                    <input type="text" list="lenguajes">
+                    <datalist id="lenguajes">
+                        <option value="HTML"></option>
+                        <option value="CSS"></option>
+                        <option value="JavaScript"></option>
+                        <option value="Python"></option>
+                        <option value="PHP"></option>
+                    </datalist>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend> Textarea </legend>
+                <label for="feedback"> Feedback : <textarea name="feedback" cols="30" rows="10"></textarea></label>
+                <label for="textoemail"> Mensaje email : <textarea id="textoemail"></textarea></label>
+                
+            </fieldset>
 
 
             <fieldset>
@@ -96,7 +174,7 @@
                 <button type="submit" disabled id="btnSubmit">Enviar formulario</button>
                 <button type="reset">Borrar el formulario</button>
                 <button type="button">Soy un button</button>
-                <button disabled="disabled">Boton deshabilitado</button>
+                <button disabled="disabled" id="deshabilitado">Boton deshabilitado</button>
             </fieldset>
 
             <p>* Campos obligatorios</p>
@@ -130,15 +208,32 @@
         })
 
         const checkboxCondiciones = document.getElementById('condiciones')
+
         checkboxCondiciones.addEventListener('change',() => {
             // alert('has cambiado el checkbox')
             const btnSubmit = document.getElementById('btnSubmit')
+             
             if (checkboxCondiciones.checked) {
                 btnSubmit.disabled = false
             } else {
                 btnSubmit.disabled = true
             }
            
+        })
+
+        const colorFuente = document.querySelector('input[type="color"]')
+
+        colorFuente.addEventListener('change', () => {
+            const color = colorFuente.value
+            document.querySelector('body').style.color = color
+        })
+
+        const numeroRango = document.getElementById('range')
+
+        numeroRango.addEventListener('change', () => {
+            const valorRango = numeroRango.value
+            document.getElementById('rangeNumber').textContent = valorRango
+
         })
 
     </script>
