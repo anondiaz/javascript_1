@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de etiquetas de formularios</title>
+    <style>
+        :focus {
+            background-color: burlywood;
+        }
+        div{
+            margin: 1rem 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header><h1>Catálogo de etiquetas de formularios</h1></header>
+    
+    <main>
+        <form action="#" id="form1" name="myForm1">
+            <fieldset>
+                <legend> *Inputs básicos</legend>
+                <div>
+                    <label for="nombre">Nombre : </label>
+                    <input
+                    type="text" 
+                    name="nombre" 
+                    id="nombre" 
+                    placeholder="Escribe tu nombre"
+                    minlength="5"
+                    maxlength="10"
+                    pattern="[A-Za-z]{5,10}"
+                    autofocus
+                   
+                    title="Escribe tu nombre, minimo 5 letras, máximo 10"
+                    />
+                    
+                </div>
+                <div>
+                    <label>Apellido : <input type="text" name="apellido"></label>
+                </div>
+                <div>
+                    <label for="password">Contraseña : </label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <label>Número : <input 
+                        type="number" 
+                        name="numero"
+                        min="3"
+                        max="6"
+                        step="2"
+                        ></label>
+                </div>
+                <div>
+                    <input type="hidden" name="hidden">
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos personales</legend>
+                <div><label>Email : <input type="email" name="email"></label></div>
+                <div><label>Telefono : <input type="tel" name="tel"></label></div>
+                <div><label>URL : <input type="url" name="url"></label></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Radiobuttons</legend>
+                <div><label><input type="radio" name="colores" value="rojo" checked>Rojo</label></div>
+                <div><label><input type="radio" name="colores" value="azul">Azul</label></div>
+                <div><label><input type="radio" name="colores" value="verde">Verde</label></div>
+            </fieldset>
+
+<fieldset>
+    <legend>Checkbox</legend>
+    <div>
+        <label><input type="checkbox" name="condiciones" id="condiciones"> Acepto las condiciones</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="info"> Acepto recibir información comercial</label>
+    </div>
+</fieldset>
+
+
+            <fieldset>
+                <legend> Inputs globales</legend>                
+                <input type="submit" value="Enviar formulario">
+                <input type="reset" value="Borrar el formulario">
+                <input type="button" value="Soy un botón">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Buttons</legend>
+                <button type="submit" disabled id="btnSubmit">Enviar formulario</button>
+                <button type="reset">Borrar el formulario</button>
+                <button type="button">Soy un button</button>
+                <button disabled="disabled">Boton deshabilitado</button>
+            </fieldset>
+
+            <p>* Campos obligatorios</p>
+        </form>
+    </main>
+    <script>
+        
+        // Sistema 1 para obtener los valores del formulario
+        const form1 = document.getElementById('form1')
+
+        // form1.addEventListener('submit', (e) => {
+        //     e.preventDefault()
+        //     const nombre = documen.getElementById('nombre').value
+        //     const password = documen.getElementById('password').value
+        // const colores = document.querySelector('input[type="radio"]:checked').value
+        //     console.log(nombre, password);
+
+        // })
+
+        // Sistema 2 por name
+        const myForm1 = document.forms['myForm1']
+
+        myForm1.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const nombre = myForm1['nombre'].value
+            const apellido = myForm1['apellido'].value
+            const password = myForm1['password'].value
+            const colores = myForm1['colores'].value
+            console.log(nombre, apellido, password, colores);
+
+        })
+
+        const checkboxCondiciones = document.getElementById('condiciones')
+        checkboxCondiciones.addEventListener('change',() => {
+            // alert('has cambiado el checkbox')
+            const btnSubmit = document.getElementById('btnSubmit')
+            if (checkboxCondiciones.checked) {
+                btnSubmit.disabled = false
+            } else {
+                btnSubmit.disabled = true
+            }
+           
+        })
+
+    </script>
+</body>
+</html>
